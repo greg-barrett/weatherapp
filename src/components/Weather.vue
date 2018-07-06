@@ -1,12 +1,14 @@
 <template>
   <div class="main">
     <input placeholder="City Name" v-model="town" v-on:keyup.enter="getWeather" v-on:keyup.backspace="clearAll" >
-    <div v-show="shown" class="forecast">
-      <p>{{town}}</p>
-      <p>{{description}}</p>
-      <i class="icon" v-bind:class="icon" ></i>
-      <p  v-on:click="tempCon">Today's High: {{high.toFixed(0)}}<span v-show="metric"> &#8451;</span><span v-show="!metric"> &#8457;</span></p>
-    </div>
+    <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
+      <div v-show="shown" class="forecast">
+        <p>{{town}}</p>
+        <p>{{description}}</p>
+        <i class="icon" v-bind:class="icon" ></i>
+        <p  v-on:click="tempCon">Today's High: {{high.toFixed(0)}}<span v-show="metric"> &#8451;</span><span v-show="!metric"> &#8457;</span></p>
+      </div>
+    </transition>
     <p class="error" v-show="!shown">{{error}}</p>
   </div>
 </template>
@@ -110,6 +112,7 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 .main {
   width: 400px;
   margin: auto;
@@ -158,5 +161,7 @@ input {
   }
 
 }
+
+
 </style>
 <style src="../../css/weather-icons.css"></style>
