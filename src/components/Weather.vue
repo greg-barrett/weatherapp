@@ -111,7 +111,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main {
-  width: 60%;
+  width: 400px;
   margin: auto;
   height: 400px;
   background-color: white;
@@ -142,6 +142,21 @@ input {
 .error {
   text-align: center;
   padding-top: 50px;
+}
+
+@media only screen and (max-width: 480px) {
+  .main {
+    width: 80%;
+  }
+  input {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .main {
+    width: 60%;
+  }
+
 }
 </style>
 <style src="../../css/weather-icons.css"></style>
